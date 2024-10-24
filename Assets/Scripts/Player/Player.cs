@@ -79,6 +79,16 @@ public class Player : MonoBehaviour
         TileBase tiletmp = other.gameObject.GetComponent<Tilemap>().GetTile(finalPosition);
 
 
+        if (tiletmp != null)
+        {
+            Tilemap map = other.gameObject.GetComponent<Tilemap>();
+            TilemapCollider2D tileCol = other.gameObject.GetComponent<TilemapCollider2D>();
+
+            map.SetTile(finalPosition, null);
+            tileCol.enabled = false;
+            tileCol.enabled = true;
+        }
+
     }
 
 
