@@ -1272,8 +1272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed5aaf0b31fab5438877e229f7c9e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldTilemap: {fileID: 1001217845}
-  speed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
