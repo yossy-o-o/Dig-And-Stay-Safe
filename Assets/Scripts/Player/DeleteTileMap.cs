@@ -5,26 +5,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class DeleteTileMap : MonoBehaviour
 {
-
-    [SerializeField] Tilemap fieldTilemap;//地面のタイルマップ
     Rigidbody2D rb;
 
-    public float speed = 5.0f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
     }
-
-    void Update()
-    {
-    
-    }
-
-
-
 
     //自分のいるColliderとの当たり判定を取得
     void OnCollisionEnter2D(Collision2D other)
@@ -75,22 +64,22 @@ public class Player : MonoBehaviour
         //座標を一旦わかりやすく格納するために、finalPositionに入れとく
         Vector3Int finalPosition = Vector3Int.RoundToInt(allPosition[minPositionNum]);
 
-
+        //otherについてるtilemapを取得して、finalPositonの位置にあるタイルを取得、無かった場合はnull
         TileBase tiletmp = other.gameObject.GetComponent<Tilemap>().GetTile(finalPosition);
 
 
+        //その位置にタイルが存在する場合
         if (tiletmp != null)
         {
+            //TilemapとtilmaoCollider2Dを取得する
             Tilemap map = other.gameObject.GetComponent<Tilemap>();
-            TilemapCollider2D tileCol = other.gameObject.GetComponent<TilemapCollider2D>();
+            TilemapCollider2D tileCollider = other.gameObject.GetComponent<TilemapCollider2D>();
 
+            //Settileを使って、Tileを削除する、finalPositionで座標を、nullで削除
             map.SetTile(finalPosition, null);
-            tileCol.enabled = false;
-            tileCol.enabled = true;
+            tileCollider.enabled = false;
+            tileCollider.enabled = true;
+            
         }
-
     }
-
-
-    
 }
