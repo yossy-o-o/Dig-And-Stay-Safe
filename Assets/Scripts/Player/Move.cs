@@ -7,7 +7,7 @@ public class Move : MonoBehaviour
 {
     Rigidbody2D rb;
     public float playerSpeed = 5.0f;
-    public SpriteRenderer sprite;
+    SpriteRenderer sprite;
     
     void Start()
     {

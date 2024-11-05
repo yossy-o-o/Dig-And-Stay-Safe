@@ -15,13 +15,13 @@ public class Tile : MonoBehaviour
     public List<GameObject> tileList = new List<GameObject>();//タイルをListの中に入れる
 
     public float intervel = 1.0f; //コルーチンの秒間
-    // Start is called before the first frame update
+
+
     void Start()
     {
         StartCoroutine(shoot());//コルーチンでshootを制御
     }
 
-    // Update is called once per frame
     void Update()
     {
         

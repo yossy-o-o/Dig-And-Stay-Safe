@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class DeleteTileMap : MonoBehaviour
 {
     Rigidbody2D rb;
+    public TextMeshProUGUI pointText;
+    public TextMeshProUGUI resultScoreText;
+    public int point = 100;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     //自分のいるColliderとの当たり判定を取得
@@ -79,7 +82,14 @@ public class DeleteTileMap : MonoBehaviour
             map.SetTile(finalPosition, null);
             tileCollider.enabled = false;
             tileCollider.enabled = true;
-            
+
+
+            point += 100;
+            pointText.text = point.ToString();
+            resultScoreText.text = point.ToString();
+
+
         }
     }
+
 }
