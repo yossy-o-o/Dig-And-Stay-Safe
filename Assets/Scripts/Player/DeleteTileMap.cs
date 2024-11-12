@@ -33,7 +33,7 @@ public class DeleteTileMap : MonoBehaviour
         BoundsInt.PositionEnumerator potiosion = other.gameObject.GetComponent<Tilemap>().cellBounds.allPositionsWithin;
 
 
-    //タイルがなかったらの処理
+        //タイルがなかったらの処理
 
         //座標を保存するためのリスト作成
         var allPosition = new List<Vector3>();
@@ -51,7 +51,7 @@ public class DeleteTileMap : MonoBehaviour
             }
         }
 
-    //最も近い位置をを探す
+        //最も近い位置をを探す
         //ここ分からないから復習必須
         for (int i = 1; i < allPosition.Count; i++)
         {
