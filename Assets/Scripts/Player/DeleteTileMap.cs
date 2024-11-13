@@ -86,10 +86,19 @@ public class DeleteTileMap : MonoBehaviour
 
             point += 100;
             pointText.text = point.ToString();
-            resultScoreText.text = point.ToString();
 
+            int highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+            if (point > highScore)
+            {
+                PlayerPrefs.SetInt("HighScore", point);
+                resultScoreText.text = point.ToString();
+            }
+            else
+            {
+                resultScoreText.text = highScore.ToString();
+            }
 
         }
     }
-
 }

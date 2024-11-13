@@ -9,13 +9,15 @@ public class DownBarrier : MonoBehaviour
 
     public Slider hpSlider;
 
-    float carrentHp;
+    public float carrentHp;
 
     public float amountDamege = 5f;
 
     public float damegeInterval = 1f;
 
     private Coroutine damegecoroutine;
+
+    public GameObject resultPanel;
 
     void Start()
     {
@@ -62,10 +64,18 @@ public class DownBarrier : MonoBehaviour
             UpdateHp();
             yield return new WaitForSeconds(damegeInterval);
         }
+
+        if(carrentHp <= 0)
+        {
+            resultPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void UpdateHp()
     {
         hpSlider.value = carrentHp / maxHp;
+
     }
+
 }
