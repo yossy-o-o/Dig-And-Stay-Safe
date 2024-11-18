@@ -9,13 +9,16 @@ using TMPro;
 public class DeleteTileMap : MonoBehaviour
 {
     Rigidbody2D rb;
-    public TextMeshProUGUI pointText;
-    public TextMeshProUGUI resultScoreText;
-    public int point = 100;
+    public ScoreSystem scoreSystem;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if(scoreSystem == null)
+        {
+            scoreSystem = FindObjectOfType<ScoreSystem>();
+        }
     }
 
     //自分のいるColliderとの当たり判定を取得
@@ -84,25 +87,10 @@ public class DeleteTileMap : MonoBehaviour
             tileCollider.enabled = true;
 
 
-            point += 100;
-            pointText.text = point.ToString();
 
-            
-
-
-        //HighScoreシステム
-
-            int highScore = PlayerPrefs.GetInt("HighScore", 0);
-
-            if (point > highScore)
-            {
-                PlayerPrefs.SetInt("HighScore", point);
-                resultScoreText.text = point.ToString();
-            }
-            else
-            {
-                resultScoreText.text = highScore.ToString();
-            }
+            //ScoreSysytemの呼び出し
+            scoreSystem.addScore(100);
+            scoreSystem.UpdateHighScore();
 
         }
     }

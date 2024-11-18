@@ -1,39 +1,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
+using System.Drawing;
 
+
+//Scoreの処理
 public class ScoreSystem : MonoBehaviour
 {
-    // スコアのセーブ処理
-    public void SaveScore(int newScore)
+    public TextMeshProUGUI pointText;
+    public TextMeshProUGUI ResultScoreText;
+    public TextMeshProUGUI resultHighScoreText;
+
+
+    public int Point = 0;
+
+
+    public void addScore(int amount)
     {
-        // 現在のスコア数を取得
-        int scoreCount = PlayerPrefs.GetInt("ScoreCount", 0);
-
-        // 新しいスコアを保存（スコア数に基づいてキーを動的に設定）
-        PlayerPrefs.SetInt($"Score_{scoreCount}", newScore);
-
-        // スコア数を更新
-        PlayerPrefs.SetInt("ScoreCount", scoreCount + 1);
-
-        // PlayerPrefsの変更を保存
-        PlayerPrefs.Save();
+        Point += amount;
+        UpdatePointText();
     }
 
-    // 上位3位のスコアを取得
-    public List<int> GetTop3Scores()
+    private void UpdatePointText()
     {
-        int scoreCount = PlayerPrefs.GetInt("ScoreCount", 0);
-        List<int> scores = new List<int>();
+        pointText.text = Point.ToString();
+        ResultScoreText.text = Point.ToString();
+    }
 
-        for (int i = 0; i < scoreCount; i++)
+    public void UpdateHighScore()
+    {
+        int HighScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if(Point > HighScore)
         {
-            int score = PlayerPrefs.GetInt($"Score_{i}");
-            scores.Add(score);
-        }
+            PlayerPrefs.SetInt("HighScore", Point);
+            resultHighScoreText.text = Point.ToString();
 
-        // スコアを降順にソートし、上位3つを返す
-        scores.Sort((a, b) => b.CompareTo(a));
-        return scores.Take(3).ToList();
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            resultHighScoreText.text = HighScore.ToString();
+        }
     }
 }
