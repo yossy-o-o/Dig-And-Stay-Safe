@@ -7,11 +7,6 @@ public class PlayerLimitPosition : MonoBehaviour
 {
     public float maxYPlayerPosition;//PlayerÇÃYå¿äEçÇìx
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         LimitPosition();
