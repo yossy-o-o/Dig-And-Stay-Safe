@@ -5,15 +5,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class DeleteTileMap : MonoBehaviour
 {
     Rigidbody2D rb;
     public ScoreSystem scoreSystem;
+    public ParticleSystem particleSystem;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        particleSystem = GetComponentInChildren<ParticleSystem>();
 
         if(scoreSystem == null)
         {
@@ -26,13 +29,13 @@ public class DeleteTileMap : MonoBehaviour
     {
         Vector3 hitPos = Vector3.zero; //座標の初期化
 
-        foreach (ContactPoint2D point in other.contacts)//ContactPoint2Dで衝突した場所の座標を取得
+        foreach (ContactPoint2D point in other.contacts)//ContactPoint2Dで接触点の座標を取得
         {
             hitPos = point.point;
         }
 
 
-        //衝突した相手のTilemapと、位置(X,Y,Z)を取得
+        //BoundsInt.PositionEnumeratorですべての座標を列挙し、hitPosに最も近い、タイルの座標をとってくる
         BoundsInt.PositionEnumerator potiosion = other.gameObject.GetComponent<Tilemap>().cellBounds.allPositionsWithin;
 
 
@@ -86,12 +89,26 @@ public class DeleteTileMap : MonoBehaviour
             tileCollider.enabled = false;
             tileCollider.enabled = true;
 
-
+            PlayPartical(hitPos);
+            
 
             //ScoreSysytemの呼び出し
             scoreSystem.addScore(100);
             scoreSystem.UpdateHighScore();
 
+        }
+    }
+
+    public void PlayPartical(Vector3 particalPosition)
+    {
+        if(particleSystem != null)
+        {
+            particleSystem.transform.position = particalPosition;
+            particleSystem.Play();
+        }
+        else
+        {
+            Debug.Log("particalSysytem is not assigned");
         }
     }
 }
