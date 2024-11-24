@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using TMPro;
-using UnityEngine.UIElements;
 
 public class DeleteTileMap : MonoBehaviour
 {
