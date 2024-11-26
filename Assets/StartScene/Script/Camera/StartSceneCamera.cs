@@ -60,7 +60,7 @@ public class StartSceneCamera : MonoBehaviour
             moveProgress -= cameraMoveSpeed * Time.deltaTime;
         }
 
-        moveProgress = Mathf.Clamp01(moveProgress); //Clampを使用して、範囲内に収める
+        moveProgress = Mathf.Clamp01(moveProgress); //Clamp01を使用して、0~1の範囲内に収める
 
         Vector3 newPosition = Vector3.Lerp(minXCameraPosition, maxXCameraPosition, moveProgress); //Lerpを使用して、徐々に移動
 
