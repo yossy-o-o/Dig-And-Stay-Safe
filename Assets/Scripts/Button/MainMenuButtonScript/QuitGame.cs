@@ -13,7 +13,7 @@ public class QuitGame : MonoBehaviour
 
         #else
             Application.Quit(); //‚»‚êˆÈŠO‚ÌŽž
-
+            
         #endif
     }
 }
