@@ -22,10 +22,6 @@ public class Tile : MonoBehaviour
         StartCoroutine(shoot());//コルーチンでshootを制御
     }
 
-    void Update()
-    {
-        
-    }
 
     //ランダムな方向(limitAngle)に発射する関数
     public Vector2 RandomDirection()
