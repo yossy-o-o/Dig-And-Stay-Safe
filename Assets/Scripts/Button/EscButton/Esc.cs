@@ -6,8 +6,26 @@ using UnityEngine;
 public class Esc : MonoBehaviour
 {
     public GameObject EscPanel;
+
+    AudioSource audio;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     public void OnClickEscButton()
     {
         EscPanel.SetActive(true);
+        PlayAudio();
+    }
+
+
+    //AudioÇÃçƒê∂
+    void PlayAudio()
+    {
+        if(audio != null)
+        {
+            audio.Play();
+        }
     }
 }
