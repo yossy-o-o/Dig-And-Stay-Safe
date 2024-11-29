@@ -3,17 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//Unityの終了処理
+//Unityの終了確認パネルボタンを押したら、移行する処理
 public class QuitGame : MonoBehaviour
 {
-    public void EndGame()
-    {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; //エディターでプレイしてる時
+    AudioSource audio; //ドアの音
+    public GameObject checkExitPanel; //終了確認パネル
 
-        #else
-            Application.Quit(); //それ以外の時
-            
-        #endif
+    public void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
+    //終了パネルに移行する処理
+    public void EndCheckGame()
+    {
+        AudioPlay();
+        checkExitPanel.SetActive(true);
+    }
+
+    //AudioSorceを取得して、音を鳴らす
+    void AudioPlay()
+    {
+        if(audio != null)
+        {
+            audio.Play();
+        }
     }
 }
