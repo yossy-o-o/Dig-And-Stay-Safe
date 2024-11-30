@@ -5,9 +5,24 @@ using UnityEngine;
 //ESCボタンを押したらの処理
 public class Esc : MonoBehaviour
 {
+    public static Esc Instance { get; private set; }
     public GameObject EscPanel;
 
     AudioSource audio;
+
+    //シングルトン化
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
