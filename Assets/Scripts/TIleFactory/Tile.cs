@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //tileを発射するクラス
-public class Tile : MonoBehaviour
+public class Tile :MonoBehaviour
 {
    // public GameObject TilePrefab;
     Rigidbody2D rb;
@@ -16,10 +17,14 @@ public class Tile : MonoBehaviour
 
     public float intervel = 1.0f; //コルーチンの秒間
 
+    AudioSource audioSource;
+
+
 
     void Start()
     {
         StartCoroutine(shoot());//コルーチンでshootを制御
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -59,9 +64,18 @@ public class Tile : MonoBehaviour
                     rb.AddForce(RandomDirection() * 500);
                 }
 
+                PlayAudio();
                 //コルーチンを使用した場合、yieldを使用する必要がある、WaitForSecondは何秒後にって意味
                 yield return new WaitForSeconds(intervel);
             }
+        }
+    }
+
+    void PlayAudio()
+    {
+        if(audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 }

@@ -11,6 +11,8 @@ public class DeleteTileMap : MonoBehaviour
     public ScoreSystem scoreSystem;
     public ParticleSystem particleSystem;
 
+    [SerializeField] AudioSoilScript audioSoilScript;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -88,7 +90,7 @@ public class DeleteTileMap : MonoBehaviour
             tileCollider.enabled = true;
 
             PlayPartical(hitPos);
-            
+            audioSoilScript.RandomPlayAudio();
 
             //ScoreSysytemの呼び出し
             scoreSystem.addScore(100);

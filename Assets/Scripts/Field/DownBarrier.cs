@@ -19,9 +19,12 @@ public class DownBarrier : MonoBehaviour
 
     public GameObject resultPanel;
 
+    AudioSource audioSource;
+
     void Start()
     {
         carrentHp = maxHp;
+        audioSource = GetComponent<AudioSource>();
         UpdateHp();
     }
     void Update()
@@ -38,6 +41,7 @@ public class DownBarrier : MonoBehaviour
             //éûä‘É_ÉÅÅ[ÉW
             if(damegecoroutine == null)
             {
+                AudioPlay();
                 damegecoroutine = StartCoroutine(AmoutDamage());
             }
         }
@@ -62,6 +66,7 @@ public class DownBarrier : MonoBehaviour
         {
             carrentHp -= amountDamege;
             UpdateHp();
+            AudioPlay();
             yield return new WaitForSeconds(damegeInterval);
         }
 
@@ -75,6 +80,15 @@ public class DownBarrier : MonoBehaviour
     public void UpdateHp()
     {
         hpSlider.value = carrentHp / maxHp;
+
+    }
+
+    void AudioPlay()
+    {
+        if(audioSource != null)
+        {
+            audioSource.Play();
+        }
 
     }
 

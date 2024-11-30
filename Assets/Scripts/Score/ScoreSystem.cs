@@ -72,7 +72,7 @@ public class ScoreSystem : MonoBehaviour
             thirdImage.SetActive(true);
             thirdText.SetActive(true);
         }
-        else if (Point <= 4000)
+        else if (Point <= 4900)
         {
             secondImage.SetActive(true);
             secondText.SetActive(true);
