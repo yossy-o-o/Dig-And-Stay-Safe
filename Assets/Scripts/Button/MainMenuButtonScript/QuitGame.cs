@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 //Unityの終了確認パネルボタンを押したら、移行する処理
@@ -12,6 +13,16 @@ public class QuitGame : MonoBehaviour
     public void Start()
     {
         audio = GetComponent<AudioSource>();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (checkExitPanel != null)
+        {
+            checkExitPanel.SetActive(false);
+        }
     }
 
     //終了パネルに移行する処理
@@ -28,5 +39,11 @@ public class QuitGame : MonoBehaviour
         {
             audio.Play();
         }
+    }
+
+    private void OnDestroy()
+    {
+        // シーン管理イベントから解除
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

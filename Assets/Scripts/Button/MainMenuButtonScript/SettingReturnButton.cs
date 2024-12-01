@@ -7,7 +7,7 @@ public class SettingReturnButton : MonoBehaviour
 {
     AudioSource audio; //SE
 
-    public GameObject settingPanel; //settingPanel
+    public GameObject settingPanel; //creditsPanel
 
     public float derayTime = 1.0f; //ƒRƒ‹[ƒ`ƒ“‚Å‚Ì’x‰„ŠÔ
 

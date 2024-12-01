@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using System.Drawing;
+using JetBrains.Annotations;
 
 
 //Score‚Ìˆ—
@@ -25,7 +26,13 @@ public class ScoreSystem : MonoBehaviour
 
     public int Point = 0; //Å‰‚ÌPoint‚Í0‚É‚·‚é
 
-    
+
+    private void Start()
+    {
+        Point = 0;
+        UpdatePointText();
+    }
+
     //Point‰ÁŽZˆ—
     public void addScore(int amount)
     {
@@ -77,7 +84,7 @@ public class ScoreSystem : MonoBehaviour
             secondImage.SetActive(true);
             secondText.SetActive(true);
         }
-        else if(Point > 6000)
+        else if(Point > 5000)
         {
             firstImage.SetActive(true);
             firstText.SetActive(true);

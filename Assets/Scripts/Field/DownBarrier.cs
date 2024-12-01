@@ -21,6 +21,8 @@ public class DownBarrier : MonoBehaviour
 
     AudioSource audioSource;
 
+    [SerializeField] AudioSource resultAudio;
+
     void Start()
     {
         carrentHp = maxHp;
@@ -72,6 +74,7 @@ public class DownBarrier : MonoBehaviour
 
         if(carrentHp <= 0)
         {
+            PlayResulAudio();
             resultPanel.SetActive(true);
             Time.timeScale = 0;
         }
@@ -92,4 +95,11 @@ public class DownBarrier : MonoBehaviour
 
     }
 
+    void PlayResulAudio()
+    {
+        if(resultAudio != null)
+        {
+            resultAudio.Play();
+        }
+    }
 }

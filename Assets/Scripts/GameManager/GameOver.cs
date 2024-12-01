@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameOver : DownBarrier
 {
-    public GameObject resultPanel;
+    public GameObject resultPanel1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class GameOver : DownBarrier
     {
         if(carrentHp < 0)
         {
-            resultPanel.SetActive(true);
+            resultPanel1.SetActive(true);
         }
     }
 }
