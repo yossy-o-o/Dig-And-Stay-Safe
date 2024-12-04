@@ -1,11 +1,11 @@
 # 1週間でゲーム開発1本目
 
 ## ゲームプレイができるサイト
-- **itch.io:** [リンクはこちら](URL)
+- **UnityRoom:** [リンクはこちら](https://unityroom.com/games/dig-and-stay-safe)
+- - **itch.io:** [リンクはこちら](https://yotya.itch.io/dig-and-stay-safe)
 
-- - **UnityRoom:** 今後追加します
+- - **UnityRoom:** [リンクはこちら](https://unityroom.com/games/dig-and-stay-safe)
 
----
 
 ## 概要
 現在、経験を積むために、独自の企画として「1週間に1本ゲームを開発する」ことを目標に活動しています。  
