@@ -4,6 +4,8 @@
 - **UnityRoom:** [リンクはこちら](https://unityroom.com/games/dig-and-stay-safe)
 - - **itch.io:** [リンクはこちら](https://yotya.itch.io/dig-and-stay-safe)
 
+- Assetファイルの中の、Scriptsファイルにコードが入っています。
+
 ## 概要
 現在、経験を積むために、独自の企画として「1週間に1本ゲームを開発する」ことを目標に活動しています。  
 今回は「**掘る**」をテーマにしてゲームを制作しました。
