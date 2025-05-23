@@ -1,5 +1,10 @@
 # 1週間でゲーム開発1本目
 
+![ゲーム画面1](dig1.png)
+![ゲーム画面1](dig2.png)
+![ゲーム画面1](dig3.png)
+
+
 ## ゲームプレイができるサイト
 - **UnityRoom:** [リンクはこちら](https://unityroom.com/games/dig-and-stay-safe)
 - - **itch.io:** [リンクはこちら](https://yotya.itch.io/dig-and-stay-safe)
